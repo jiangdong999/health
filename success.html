@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/reset.css">
+  <title>填写成功</title>
+  <style>
+    html,body{
+      background: #f7f7fa;
+    }
+    .box-top{
+      width: 100%;
+      height: 80px;
+      margin: 36px auto 30px;
+    }
+    .box-top dl{
+      width: auto;
+      height: 70px;
+      display: flex;
+      padding: 0px 30px;
+    }
+    .box-top dl dt{
+      width: 70px;
+      height: 70px;
+    }
+    .box-top dl dt img{
+      width: 70px;
+      height: 70px;
+      display: block;
+      margin-top: 5px;
+    }
+    .box-top dl dd{
+      flex: 1;
+      margin-left:20px;
+    }
+    .box-top dl dd h1{
+      height:24px;
+      line-height: 24px;
+      font-weight: 600;
+      color: #0aaf86;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .box-top dl dd p{
+      font-size: 16px;
+      font-weight: 500;
+      color: #999999;
+      line-height: 22px;
+    }
+    .box-bottom{
+      width: auto;
+      height: auto;
+      margin: 25px 30px;
+      background: #fff;
+      padding: 30px 15px;
+      border-radius: 4px;
+    }
+    .box-bottom h1{
+      width: auto;
+      height: 24px;
+      
+    }
+    .box-bottom h1 img{
+      width: 24px;
+      height: 24px;
+      margin-right: 15px;
+      float: left;
+    }
+    .box-bottom h1 b{
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      font-size: 18px;
+      color: #666666;
+    }
+    .box-bottom h2{
+      margin-left: 38px;
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div class="box-top">
+      <dl>
+        <dt>
+          <img src="./img/img-success.png">
+        </dt>
+        <dd>
+          <h1>今日审核已通过</h1>
+          <p>此流调表3天内有效<br>请携带身份证前往医院签到就诊</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="box-bottom">
+      <h1>
+        <img src="./img/icon_jietu@2x.png" alt="">
+        <b>请截屏保存，在分诊台出示！</b>
+      </h1>
+      <h1 style="margin-top:25px">
+        <img src="./img/icon_time@2x.png" alt="">
+        <b>信息采集时间</b>
+      </h1>
+      <h2 class="tip1">
+        <!-- 2020年08月02日 -->
+      </h2>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  let date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  
+  month = month >= 10 ? month : "0" + month;
+  day = day >= 10 ? day : "0" + day;
+
+  let str = `${year}年${month}月${day}日`;
+  let tip1 = document.getElementsByClassName('tip1');
+  tip1[0].innerHTML = `${str}`
+</script>

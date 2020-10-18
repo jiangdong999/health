@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/reset.css">
+  <title>填写成功</title>
+  <style>
+    html,body{
+      background: #f7f7fa;
+    }
+    .box-top{
+      width: 100%;
+      height: 80px;
+      margin: 36px auto 30px;
+    }
+    .box-top dl{
+      width: auto;
+      height: auto;
+      display: flex;
+      padding: 0px 30px;
+    }
+    .box-top dl dt{
+      width: 70px;
+      height: 70px;
+    }
+    .box-top dl dt img{
+      width: 70px;
+      height: 70px;
+      display: block;
+      margin-top: 5px;
+    }
+    .box-top dl dd{
+      flex: 1;
+      margin-left:20px;
+    }
+    .box-top dl dd h1{
+      height:24px;
+      line-height: 24px;
+      font-weight: 600;
+      color: #ff7135;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .box-top dl dd p{
+      font-size: 16px;
+      font-weight: 500;
+      color: #999999;
+      line-height: 22px;
+    }
+    .box-bottom{
+      width: auto;
+      height: auto;
+      margin: 25px 30px 10px 30px;
+      background: #fff;
+      padding: 30px 15px;
+      border-radius: 4px;
+    }
+    .box-bottom h1{
+      width: auto;
+      height: auto;
+    }
+    .box-bottom h1 img{
+      width: 24px;
+      height: 24px;
+      margin-right: 15px;
+      float: left;
+    }
+    .box-bottom h1 b{
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      font-size: 18px;
+      color: #666666;
+    }
+    .box-bottom  h2{
+      margin-left: 38px;
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .box-cont{
+      background: #fff;
+      margin: 0px 30px 30px 30px;
+      border-radius: 4px;
+    }
+    
+    .box-cont h3{
+      width: auto;
+      height: auto;
+      border-bottom: 1px solid #f7f7fa;
+      padding: 15px 10px;
+    }
+    .box-cont h3:last-child{
+      border-bottom: 0px;
+    }
+    .box-cont h3 img{
+      width: 10px;
+      height: 10px;
+      margin-right: 10px;
+      margin-top: 5px;
+      float: left;
+    }
+    .box-cont h3 b{
+      width: auto;
+      height: auto;
+      line-height: 21px;
+      font-size: 15px;
+      color: #ff7135;
+      font-weight: 400;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div class="box-top">
+      <dl>
+        <dt>
+          <img src="./img/icon11.png">
+        </dt>
+        <dd>
+          <h1>今日审核未通过</h1>
+          <p>此流调表3天内有效<br>请携带身份证前往医院签到就诊</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="box-bottom">
+      <h1>
+        <img src="./img/icon_jietu@2x.png" alt="">
+        <b>请截屏保存，在分诊台出示！</b>
+      </h1>
+      <h1 style="margin-top:25px">
+        <img src="./img/icon_time@2x.png" alt="">
+        <b>信息采集时间</b>
+      </h1>
+      <h2 class="tip1">
+        <!-- 2020年08月02日 -->
+      </h2>
+    </div>
+    <div class="box-cont">
+      <!-- <h1 style="margin-bottom: 15px;">
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">14天内有国内高中风险居住史或旅行史</b>
+      </h1> -->
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  let date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  
+  month = month >= 10 ? month : "0" + month;
+  day = day >= 10 ? day : "0" + day;
+
+  let str = `${year}年${month}月${day}日`;
+  let tip1 = document.getElementsByClassName('tip1');
+  tip1[0].innerHTML = `${str}`
+
+  var url = decodeURI(window.location.href);
+  var arr = url.split('?');
+  var params = arr[1];
+  var keyValue = params.split('&');
+  var obj = {};
+  for (var i = 0; i<keyValue.length; i++){
+    var item = keyValue[i].split('=');
+    var key = item[0];
+    var value = item[1];
+    obj[key] = value;
+  }
+  
+  var boxCont = document.getElementsByClassName('box-cont');
+
+  let contStr='';
+  if(obj.input1 == '是') {
+    contStr+=`
+      <h3>
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">发病前10日内去过内蒙古巴彦淖尔市、包头等鼠疫高风险地区</b>
+      </h3>`
+  }
+  if(obj.input2 == '是') {
+    contStr+=`
+      <h3>
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">发病前10日内有鼠疫疫源地旅居史或狩猎、剥食、接触过鼠类、旱獭等啮齿动物</b>
+      </h3>`
+  }
+  if(obj.input3 == '是') {
+    contStr+=`
+      <h3>
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">发病前14天内有境外或国内有新冠肺炎病例报告地区（新疆地区特别是乌鲁木齐地区、辽宁省大连等地区）旅行史或居住史</b>
+      </h3>`
+  }
+  if(obj.input4 == '是') {
+    contStr+=`
+      <h3>
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">14天内有发热（T≥37.3℃）、咳嗽、咽痛、腹泻等症状</b>
+      </h3>`
+  }
+  if(obj.input5 == '是') {
+    contStr+=`
+      <h3>
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">14天内曾接触新冠病毒感染者</b>
+      </h3>`
+  }
+  if(obj.input6 == '是') {
+    contStr+=`
+      <h3>
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">14天内曾接触来自境外或国内有新冠肺炎病例报告地区的发热或有呼吸道症状的患者</b>
+      </h3>`
+  }
+  if(obj.input7 == '是') {
+    contStr+=`
+      <h3>
+        <img src="./img/img-onpass.png" alt="">
+        <b class="boxContB">14天内家庭、单位或周边人员有多人出现相同症状</b>
+      </h3>`
+  }
+  boxCont[0].innerHTML=contStr
+  
+</script>
